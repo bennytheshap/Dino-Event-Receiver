@@ -5,6 +5,13 @@ class Contouring
   key :chapter_id, String, :required=>true
   key :accuracy_score, Numeric, :required=>true
   key :overlap_score, Numeric, :required=>true
+  
+  key :image_width, Numeric, :required=>true
+  key :image_height, Numeric, :required=>true
+  
+  key :view_width, Numeric, :required=>true
+  key :view_height, Numeric, :required=>true
+  
   many :points
   
   timestamps!

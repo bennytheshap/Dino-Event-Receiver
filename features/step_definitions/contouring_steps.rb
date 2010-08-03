@@ -5,6 +5,11 @@ Given /^a contouring$/ do
                                      :chapter_id => "yourmom",
                                      :accuracy_score => 42,
                                      :overlap_score => 42,
+                                     :image_width => 600,
+                                     :image_height => 400,
+                                     :view_width => 300,
+                                     :view_height => 200,
+                                     
                                      :points => [
                                       {:x => 10, :y => 12, :radius => 3, :colored => true, :when => Time.now},
                                       {:x => 4, :y => 8, :radius => 6, :colored => false, :when => Time.now},
