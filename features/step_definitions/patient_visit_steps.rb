@@ -1,23 +1,7 @@
 require 'rest_client'
 
-# class PatientVisit
-#   include MongoMapper::Document
-#   key :sessionid, Session, :required=>true
-#   key :chapterid, String, :required=>true
-#   many :choices, :class_name => "DialogueChoice"
-#   timestamps!
-# end
-# 
-# class DialogueChoice
-#    include MongoMapper::EmbeddedDocument
-#    key :choice, String, :required=>true
-#    key :when, Time, :required=>true
-#    
-#    belongs_to :patient_visit
-# end
-
 Given /^a patient visit$/ do
-  @fake_visit = {:patient_visit => { :session_id => @fake_session[:session][:session_id],
+  @fake_visit = {:patient_visit => { :session_id => @fake_session[:session][:id],
                                      :chapter_id => "yourmom",
                                      :choices => [
                                       {:choice => "firstchoice", :when => Time.now},

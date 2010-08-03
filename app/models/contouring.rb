@@ -1,10 +1,10 @@
 class Contouring
   include MongoMapper::Document
   
-  key :session_id, Session, :required=>true
+  key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
-  key :score, Numeric, :required=>true
-  
+  key :accuracy_score, Numeric, :required=>true
+  key :overlap_score, Numeric, :required=>true
   many :points
   
   timestamps!

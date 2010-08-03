@@ -1,6 +1,6 @@
 Gamelog::Application.routes.draw do
   
-  resources :sessions, :patient_visits
+  resources :sessions, :patient_visits, :contourings
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
