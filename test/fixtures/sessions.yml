@@ -1,0 +1,7 @@
+first:
+    sessionid: firstsession
+    user: firstuser
+
+second:
+    sessionid: secondsession
+    user: seconduser 

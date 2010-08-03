@@ -1,0 +1,40 @@
+require 'rest_client'
+
+# class PatientVisit
+#   include MongoMapper::Document
+#   key :sessionid, Session, :required=>true
+#   key :chapterid, String, :required=>true
+#   many :choices, :class_name => "DialogueChoice"
+#   timestamps!
+# end
+# 
+# class DialogueChoice
+#    include MongoMapper::EmbeddedDocument
+#    key :choice, String, :required=>true
+#    key :when, Time, :required=>true
+#    
+#    belongs_to :patient_visit
+# end
+
+Given /^a patient visit$/ do
+  @fake_visit = {:patient_visit => { :session_id => @fake_session[:session][:session_id],
+                                     :chapter_id => "yourmom",
+                                     :choices => [
+                                      {:choice => "firstchoice", :when => Time.now},
+                                      {:choice => "secondchoice", :when => Time.now}
+                                     ]
+                                    }, :version=>1 }
+end
+
+When /^I send the patient visit to the patient visit controller$/ do
+  @fake_visit_as_json = ActiveSupport::JSON.encode(@fake_visit)
+  @response = RestClient.post "localhost:3000/patient_visits", @fake_visit_as_json, :content_type => :json, :accept => :json
+end
+
+Then /^I should see the patient visit data in return$/ do
+  assert_nothing_raised do
+    json=ActiveSupport::JSON.decode(@response.body)
+    json['chapter_id'].should == @fake_visit[:patient_visit][:chapter_id]
+    json['choices'].length == @fake_visit[:patient_visit][:choices].length
+  end
+end

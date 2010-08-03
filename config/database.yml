@@ -1,0 +1,17 @@
+development:
+  adapter: mongodb
+  host: localhost
+  database: gamelogger_devel
+
+test: &TEST
+  adapter: mongodb
+  host: localhost
+  database: gamelogger_test
+
+production:
+  adapter: mongodb
+  host: localhost
+  database: gamelogger_production
+
+cucumber:
+  <<: *TEST
