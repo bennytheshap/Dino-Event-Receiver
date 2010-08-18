@@ -1,5 +1,5 @@
 class Contouring
-  include MongoMapper::Document
+  include MongoMapper::EmbeddedDocument
   
   key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
@@ -13,6 +13,8 @@ class Contouring
   key :view_height, Numeric, :required=>true
   
   many :points
+  
+  belongs_to :session
   
   timestamps!
 end
