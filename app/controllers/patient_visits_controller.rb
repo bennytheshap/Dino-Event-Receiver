@@ -4,24 +4,30 @@ class PatientVisitsController < ApplicationController
   
   def show
     @patient_visit = PatientVisit.find(params[:id])
-    #@events = Event.all(:conditions => {'session_id' => @session.id}, :order=>'created_at')
-    respond_with(@patient_visit)
+    @session = @patient_visit.session
+    respond_with(@session, @patient_visit)
   end
 
   def create
     @patient_visit = PatientVisit.new(params[:patient_visit])
-    if @patient_visit.save
-      respond_with(@patient_visit)
+    @session = Session.find(params[:session_id])
+    @session.patient_visits << @patient_visit
+    if @patient_visit.valid? and @session.save
+      respond_with(@session, @patient_visit) 
     else
-      respond_with(@patient_visit, :status => :unprocessable_entity)
+      respond_with(@session, @patient_visit, :status => :unprocessable_entity) 
     end
   end
   
   def new
+    @patient_visit = PatientVisit.new
+    @session = Session.find(params[:session_id])
+    respond_with(@session, @patient_visit)
   end
 
   def index
-    @patient_visits = PatientVisit.all()
-    respond_with(@patient_visits)
+    @session = Session.find(params[:session_id])
+    @patient_visits = @session.patient_visits
+    respond_with(@session, @patient_visits)
   end
 end

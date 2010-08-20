@@ -4,24 +4,30 @@ class ContouringsController < ApplicationController
   
   def show
     @contouring = Contouring.find(params[:id])
-    #@events = Event.all(:conditions => {'session_id' => @session.id}, :order=>'created_at')
-    respond_with(@contouring)
+    respond_with(@session, @contouring)
   end
 
   def create
     @contouring = Contouring.new(params[:contouring])
-    if @contouring.save
-      respond_with(@contouring)
+    @session = Session.find(params[:session_id])
+    @session.contourings << @contouring
+    
+    if @contouring.valid? and @session.save
+      respond_with(@session, @contouring)
     else
-      respond_with(@contouring, :status => :unprocessable_entity)
+      respond_with(@session, @contouring, :status => :unprocessable_entity)
     end
   end
   
   def new
+    @contouring = Contouring.new
+    @session = Session.find(params[:session_id])
+    respond_with(@session, @contouring)
   end
 
   def index
-    @contourings = Contouring.all()
-    respond_with(@contourings)
+    @session = Session.find(params[:session_id])
+    @contourings = @session.contourings
+    respond_with(@session, @contourings)
   end
 end

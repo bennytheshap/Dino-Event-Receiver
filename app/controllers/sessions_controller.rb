@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   respond_to :json
   
   def show
-    @session = Session.find(params[:session])
+    @session = Session.find(params[:id])
     #@events = Event.all(:conditions => {'session_id' => @session.id}, :order=>'created_at')
     respond_with(@session)
   end

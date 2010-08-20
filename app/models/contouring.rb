@@ -12,11 +12,11 @@ class Contouring
   key :view_width, Numeric, :required=>true
   key :view_height, Numeric, :required=>true
   
+  key :when, Time, :required=>true  
+  
   many :points
   
   belongs_to :session
-  
-  timestamps!
 end
 
 class Point

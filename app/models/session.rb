@@ -1,5 +1,7 @@
 class Session
   include MongoMapper::Document
+  plugin RandomShardPlugin
+  
   key :user, String
   
   many :therapies
