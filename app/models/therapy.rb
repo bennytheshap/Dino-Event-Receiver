@@ -1,3 +1,5 @@
+require 'randomly_sharded_mongomapper_document'
+
 class Therapy
   include MongoMapper::Document
   plugin RandomShardPlugin

@@ -1,3 +1,5 @@
+require 'randomly_sharded_mongomapper_document'
+
 class Contouring
   include MongoMapper::Document
   plugin RandomShardPlugin
@@ -17,18 +19,7 @@ class Contouring
   key :started_at, Time, :required=>true  
   
   many :mouse_movements, :class_name => "ContourMouseMovement"
-  
-  # many :points
-  
+    
   belongs_to :session
 end
 
-# class Point
-#   include MongoMapper::EmbeddedDocument
-#   
-#   belongs_to :countouring
-#   
-#   key :x, Numeric, :required=>true
-#   key :y, Numeric, :required=>true
-#   key :radius, Numeric, :required=>true 
-# end

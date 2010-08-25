@@ -1,3 +1,5 @@
+require 'randomly_sharded_mongomapper_document'
+
 class BeamChange
   include MongoMapper::Document  
   plugin RandomShardPlugin

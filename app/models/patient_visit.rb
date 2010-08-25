@@ -1,5 +1,8 @@
+require 'randomly_sharded_mongomapper_document'
+
 class PatientVisit
   include MongoMapper::Document
+  plugin RandomShardPlugin
   
   #key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
