@@ -14,4 +14,15 @@ class ContouringMouseMovement
   key :radius, Numeric, :required=>true
   
   key :is_colored, Boolean, :required => true  #true if marking, false if erasing
+  # 
+  many :points
+end
+
+class Point
+  include MongoMapper::EmbeddedDocument
+  
+  belongs_to :contouring_mouse_movement
+  
+  key :x, Numeric, :required=>true
+  key :y, Numeric, :required=>true
 end
