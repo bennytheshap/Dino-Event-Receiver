@@ -1,13 +1,16 @@
 class Therapy
-  include MongoMapper::EmbeddedDocument
+  include MongoMapper::Document
+  plugin RandomShardPlugin
   
   key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
   
-  key :accuracy, Numeric, :required=>true
-  key :damage, Numeric, :required=>true
+  key :accuracy, Numeric
+  key :damage, Numeric
   
-  key :when, Time, :required=>true
+  key :started_at, Time, :required=>true 
+  
+  many :beam_changes
 
   belongs_to :session
 end

@@ -1,8 +1,10 @@
 class Contouring
-  include MongoMapper::EmbeddedDocument
-  
+  include MongoMapper::Document
+  plugin RandomShardPlugin
+    
   key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
+  
   key :accuracy_score, Numeric, :required=>true
   key :overlap_score, Numeric, :required=>true
   
@@ -12,21 +14,21 @@ class Contouring
   key :view_width, Numeric, :required=>true
   key :view_height, Numeric, :required=>true
   
-  key :when, Time, :required=>true  
+  key :started_at, Time, :required=>true  
   
-  many :points
+  many :mouse_movements, :class_name => "ContourMouseMovement"
+  
+  # many :points
   
   belongs_to :session
 end
 
-class Point
-  include MongoMapper::EmbeddedDocument
-  
-  belongs_to :countouring
-  
-  key :x, Numeric, :required=>true
-  key :y, Numeric, :required=>true
-  key :radius, Numeric, :required=>true
-  key :colored, Boolean, :required=>true #should be false if the point was erased
-  key :when, Time, :required=>true  
-end
+# class Point
+#   include MongoMapper::EmbeddedDocument
+#   
+#   belongs_to :countouring
+#   
+#   key :x, Numeric, :required=>true
+#   key :y, Numeric, :required=>true
+#   key :radius, Numeric, :required=>true 
+# end

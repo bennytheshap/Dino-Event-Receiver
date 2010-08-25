@@ -8,12 +8,11 @@ Given /^a contouring$/ do
                                      :image_width => 600,
                                      :image_height => 400,
                                      :view_width => 300,
-                                     :view_height => 200,
-                                     
-                                     :points => [
-                                      {:x => 10, :y => 12, :radius => 3, :colored => true, :when => Time.now},
-                                      {:x => 4, :y => 8, :radius => 6, :colored => false, :when => Time.now},
-                                     ]
+                                     :view_height => 200,                                 
+                                     # :points => [
+                                     #  {:x => 10, :y => 12, :radius => 3, :colored => true, :when => Time.now},
+                                     #  {:x => 4, :y => 8, :radius => 6, :colored => false, :when => Time.now},
+                                     # ]
                                     }, :version=>1 }
 end
 
@@ -26,6 +25,7 @@ Then /^I should see the contouring data in return$/ do
   assert_nothing_raised do
     json=ActiveSupport::JSON.decode(@response.body)
     json['id'].should be_an_instance_of(String)
+    @fake_contouring[:contouring][:id] = json['id']
   end
 end
 

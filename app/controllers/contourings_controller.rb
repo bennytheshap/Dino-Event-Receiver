@@ -24,6 +24,16 @@ class ContouringsController < ApplicationController
     @session = Session.find(params[:session_id])
     respond_with(@session, @contouring)
   end
+  
+  def update
+    @contouring = Contouring.find(params[:id])
+    @contouring.update_attributes(params[:contouring])
+    if @contouring.save
+      respond_with(@session, @contouring)
+    else
+      respond_with(@session, @contouring, :status => :unprocessable_entity)
+    end    
+  end
 
   def index
     @session = Session.find(params[:session_id])

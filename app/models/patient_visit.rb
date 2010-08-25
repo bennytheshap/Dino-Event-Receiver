@@ -1,11 +1,11 @@
 class PatientVisit
-  include MongoMapper::EmbeddedDocument
+  include MongoMapper::Document
   
   #key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
   many :choices, :class_name => "DialogueChoice"
   
-  key :when, Time, :required=>true  
+  key :started_at, Time, :required=>true  
   
   belongs_to :session
 end

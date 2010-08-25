@@ -2,9 +2,12 @@ Gamelog::Application.routes.draw do
   
   resources :sessions, :except => [:destroy, :update] do 
     resources :patient_visits, :except => [:destroy, :update]
-    resources :contourings, :except => [:destroy, :update]
-    resources :beam_changes, :except => [:destroy, :update]
-    resources :therapies, :except => [:destroy, :update]
+    resources :contourings, :except => [:destroy] do
+      resources :contouring_mouse_movements, :except => [:destroy, :update]
+    end
+    resources :therapies, :except => [:destroy, :update] do
+      resources :beam_changes, :except => [:destroy, :update]
+    end
   end
   
   # The priority is based upon order of creation:

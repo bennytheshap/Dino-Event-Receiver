@@ -4,8 +4,7 @@ class BeamChange
   
   validate :something_must_have_changed
   
-  key :session_id, ObjectId, :required=>true
-  key :chapter_id, String, :required=>true
+  key :therapy_id, ObjectId, :required=>true
   
   key :beam, String, :required=>true
   
@@ -16,7 +15,7 @@ class BeamChange
 
   key :when, Time, :required=>true
   
-  belongs_to :session
+  belongs_to :therapy
   
   timestamps!
     
