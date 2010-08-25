@@ -9,8 +9,6 @@ class ContouringMouseMovement
   key :when, Time, :required=>true
   
   #x, y, and radius should be within the (unscaled) plane of the source image
-  key :x, Numeric, :required=>true
-  key :y, Numeric, :required=>true
   key :radius, Numeric, :required=>true
   
   key :is_colored, Boolean, :required => true  #true if marking, false if erasing
