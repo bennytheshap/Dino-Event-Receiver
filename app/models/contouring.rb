@@ -5,8 +5,8 @@ class Contouring
   key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
   
-  key :accuracy_score, Numeric, :required=>true
-  key :overlap_score, Numeric, :required=>true
+  key :accuracy_score, Numeric
+  key :overlap_score, Numeric
   
   key :image_width, Numeric, :required=>true
   key :image_height, Numeric, :required=>true
