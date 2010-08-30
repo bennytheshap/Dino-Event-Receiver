@@ -1,17 +1,17 @@
 development:
   adapter: mongodb
   host: localhost
-  database: gamelogger_devel
+  database: contour_log_devel
 
 test: &TEST
   adapter: mongodb
   host: localhost
-  database: gamelogger_test
+  database: contour_log_test
 
 production:
   adapter: mongodb
   host: localhost
-  database: gamelogger_production
+  database: contour_log_production
 
 cucumber:
   <<: *TEST

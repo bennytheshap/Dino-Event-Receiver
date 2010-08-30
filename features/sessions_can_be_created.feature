@@ -5,7 +5,7 @@ Feature: sessions can be created
 	I want to log play sessions
 	
 	Scenario: game session is created
-		Given a game session started elsewhere
+		Given a set of authentication credentials
 		When I send the game session to the session controller
 		Then I should see the session data in return
 		

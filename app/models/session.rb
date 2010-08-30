@@ -4,7 +4,9 @@ class Session
   include MongoMapper::Document
   plugin RandomShardPlugin
   
-  key :user, String
+  key :user_id, ObjectId
+  
+  belongs_to :user
   
   many :therapies
   many :contourings

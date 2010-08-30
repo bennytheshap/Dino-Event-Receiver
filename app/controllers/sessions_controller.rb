@@ -9,7 +9,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.new(params[:session])
+    if params.has_key? :user
+      @username = params[:user][:username]
+      password = params[:user][:password]
+      @user = User.where(:username => @username).limit(1).first
+      if @user and @user.valid_password? password
+        @session = Session.new
+        @session.user = @user
+      else
+        respond_with("invalid username and/or password", :status => :unprocessable_entity)
+      end
+    else
+      @session = Session.new
+    end
     if @session.save
       respond_with(@session)
     else

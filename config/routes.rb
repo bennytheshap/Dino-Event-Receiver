@@ -1,5 +1,7 @@
 Gamelog::Application.routes.draw do
   
+  #devise_for :users
+
   resources :sessions, :except => [:destroy, :update] do 
     resources :patient_visits, :except => [:destroy, :update]
     resources :contourings, :except => [:destroy] do

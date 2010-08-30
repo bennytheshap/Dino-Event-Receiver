@@ -1,8 +1,11 @@
 require 'rest_client'
 
-Given /^a game session started elsewhere$/ do
-  @fake_session = {:session => {:user => "fakeuser"}, :version=>1 }
+Given /^a set of authentication credentials$/ do
+  @fake_session = {:user => {:username => "alow", :password => "123456"}, :version=>1, :session => {} }
+  @fake_session = {:version=>1, :session => {} }
 end
+
+
 
 When /^I send the game session to the session controller$/ do
   @fake_session_as_json = ActiveSupport::JSON.encode(@fake_session)
