@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       if @user and @user.valid_password? password
         @session.user = @user
       else
-        respond_with(@session, :status => :unprocessable_entity)
+        return respond_with(@session, :status => :unprocessable_entity)
       end
     end
     
