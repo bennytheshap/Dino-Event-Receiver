@@ -10,18 +10,17 @@ class SessionsController < ApplicationController
 
   def create
     if params.has_key? :user
+      @session = Session.new
       @username = params[:user][:username]
       password = params[:user][:password]
       @user = User.where(:username => @username).limit(1).first
       if @user and @user.valid_password? password
-        @session = Session.new
         @session.user = @user
       else
-        respond_with("invalid username and/or password", :status => :unprocessable_entity)
+        respond_with(@session, :status => :unprocessable_entity)
       end
-    else
-      @session = Session.new
     end
+    
     if @session.save
       respond_with(@session)
     else
