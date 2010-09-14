@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @session = Session.new
     if params.has_key? :user
-      @session = Session.new
       @username = params[:user][:username]
       password = params[:user][:password]
       @user = User.where(:username => @username).limit(1).first
