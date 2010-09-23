@@ -18,7 +18,7 @@ class Contouring
   
   key :started_at, Time, :required=>true  
   
-  many :mouse_movements, :class_name => "ContourMouseMovement"
+  many :mouse_movements, :class_name => "ContouringMouseMovement"
     
   belongs_to :session
 end
