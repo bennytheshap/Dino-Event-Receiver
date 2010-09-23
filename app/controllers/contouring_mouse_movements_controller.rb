@@ -13,7 +13,7 @@ class ContouringMouseMovementsController < ApplicationController
     @contouring = Contouring.find(params[:contouring_id])
     @cmm = ContouringMouseMovement.new(params[:contouring_mouse_movement])
     @cmm.contouring = @contouring
-    if @beam_change.save
+    if @cmm.save
       respond_with(@session, @contouring, @cmm)
     else
       respond_with(@session, @contouring, @cmm, :status => :unprocessable_entity)
