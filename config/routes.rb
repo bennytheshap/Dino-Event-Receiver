@@ -1,6 +1,7 @@
 Gamelog::Application.routes.draw do
   
   #devise_for :users
+  match '/contourings/:id/end(.:format)' => 'contourings#end' 
 
   resources :sessions, :except => [:destroy, :update] do 
     resources :patient_visits, :except => [:destroy, :update]
