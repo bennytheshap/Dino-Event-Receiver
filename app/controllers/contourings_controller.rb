@@ -28,6 +28,7 @@ class ContouringsController < ApplicationController
   def update
     @contouring = Contouring.find(params[:id])
     @contouring.update_attributes(params[:contouring])
+    @session = @session = Session.find(params[:session_id])
     if @contouring.save
       respond_with(@session, @contouring)
     else
@@ -38,6 +39,7 @@ class ContouringsController < ApplicationController
   def end
     @contouring = Contouring.find(params[:id])
     @contouring.update_attributes(params[:contouring])
+    @session = @contouring.session
     if @contouring.save
       respond_with(@session, @contouring)
     else
