@@ -7,8 +7,8 @@ class Therapy
   key :session_id, ObjectId, :required=>true
   key :chapter_id, String, :required=>true
   
-  key :accuracy, Numeric
-  key :damage, Numeric
+  key :accuracy_score, Numeric
+  key :damage_score, Numeric
   
   key :started_at, Time, :required=>true 
   
