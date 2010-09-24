@@ -28,6 +28,19 @@ class TherapiesController < ApplicationController
       respond_with(@session, @therapy, :status => :unprocessable_entity)
     end    
   end
+  
+  def end
+    @therapy = Therapy.find(params[:id])
+    @session = @therapy.session
+    
+    @therapy.update_attributes(params[:therapy])
+    if @therapy.save
+      respond_with(@session, @therapy)
+    else
+      respond_with(@session, @therapy, :status => :unprocessable_entity)
+    end    
+  end
+  
   def index
     @session = Session.find(params[:session_id])
     @therapies = @session.therapies
