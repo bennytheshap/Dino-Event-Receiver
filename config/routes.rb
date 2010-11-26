@@ -1,17 +1,18 @@
 Gamelog::Application.routes.draw do
   
   #devise_for :users
-  match '/contourings/:id/end(.:format)' => 'contourings#end' 
-  match '/therapies/:id/end(.:format)' => 'therapies#end' 
+  # match '/contourings/:id/end(.:format)' => 'contourings#end' 
+  # match '/therapies/:id/end(.:format)' => 'therapies#end' 
 
+  post '/sessions/:session_id/bulk_events(.:format)' => 'events#create_bulk'
   resources :sessions, :except => [:destroy, :update] do 
-    resources :patient_visits, :except => [:destroy, :update]
-    resources :contourings, :except => [:destroy] do
-      resources :contouring_mouse_movements, :except => [:destroy, :update]
-    end
-    resources :therapies, :except => [:destroy, :update] do
-      resources :beam_changes, :except => [:destroy, :update]
-    end
+    # resources :patient_visits, :except => [:destroy, :update]
+    # resources :contourings, :except => [:destroy] do
+    #   resources :contouring_mouse_movements, :except => [:destroy, :update]
+    # end
+    # resources :therapies, :except => [:destroy, :update] do
+    #   resources :beam_changes, :except => [:destroy, :update]
+    # end
   end
   
   # The priority is based upon order of creation:

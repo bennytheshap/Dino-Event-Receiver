@@ -4,13 +4,7 @@ class Session
   include MongoMapper::Document
   plugin RandomShardPlugin
   
-  key :user_id, ObjectId
-  
-  belongs_to :user
-  
-  many :therapies
-  many :contourings
-  many :patient_visits
+  many :events
   
   timestamps!
 end
