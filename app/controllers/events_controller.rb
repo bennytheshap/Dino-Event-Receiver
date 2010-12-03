@@ -1,6 +1,18 @@
 class EventsController < ApplicationController
   respond_to :json
   
+  def show
+    @session = Session.find(params[:session_id])
+    @event = Event.find(params[:id])
+    respond_with(@session, @event)
+  end
+  
+  def index
+    @session = Session.find(params[:session_id])
+    @events = @session.events
+    respond_with(@session, @events)
+  end
+  
   def create_bulk
     @session = Session.find(params[:session_id])
     raw_events = params[:events]

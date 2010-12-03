@@ -6,6 +6,7 @@ Gamelog::Application.routes.draw do
 
   post '/sessions/:session_id/bulk_events(.:format)' => 'events#create_bulk'
   resources :sessions, :except => [:destroy, :update] do 
+    resources :events, :only => [:show, :index]
     # resources :patient_visits, :except => [:destroy, :update]
     # resources :contourings, :except => [:destroy] do
     #   resources :contouring_mouse_movements, :except => [:destroy, :update]
