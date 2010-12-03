@@ -6,7 +6,7 @@ class Event
   
   key :session_id, ObjectId, :required=>true
   key :time, Numeric, :required=>true
-
+  key :event_name, String, :required=>true
   
   belongs_to :session
 end
