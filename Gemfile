@@ -5,7 +5,7 @@ gem 'rails', '3.0.3'
 gem 'mongo_mapper'
 gem 'bson_ext'
 
-gem 'machinist', :git => 'git://github.com/notahat/machinist.git'
+#gem 'machinist', :git => 'git://github.com/notahat/machinist.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,8 +23,8 @@ gem 'machinist', :git => 'git://github.com/notahat/machinist.git'
 
 # Bundle the extra gems:
 # gem 'bj'
-gem 'nokogiri'
-gem 'webrat'
+#gem 'nokogiri'
+#gem 'webrat'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
@@ -42,5 +42,5 @@ gem "mm-devise"
 gem "rspec-rails",      ">= 2.0.0.beta"
 gem "autotest"
 gem "autotest-rails"
-gem "cucumber-rails"
+#gem "cucumber-rails"
 gem "rest-client"
